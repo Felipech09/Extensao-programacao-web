@@ -1,6 +1,6 @@
 # Extensão: Programação Web
 
-Este repositório reúne os projetos desenvolvidos durante a **aula de sábado** da disciplina de Programação Web.  
+Este repositório reúne os projetos desenvolvidos durante a **aula de sábado** da disciplina de: "Extensão: Programação Web".  
 Cada aula possui sua própria pasta, organizada por ordem, contendo os arquivos e códigos trabalhados em sala.
 
 ## Estrutura
