@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <script>
+const n = parseInt(prompt("Digite quantos termos da série deseja somar:"));
+
+let termo = 0;
+let soma = 0;
+
+for (let i = 1; i <= n; i++) {
+  termo = parseInt("1".repeat(i));
+  soma += termo;
+  console.log(`${termo}`);
+}
+
+console.log(`A soma dos ${n} primeiros termos é: ${soma}`);
+  </script>
+</body>
+</html>

@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+<meta charset="UTF-8">
+<title>Pedra Papel Tesoura</title>
+</head>
+
+<body>
+
+<h1>Pedra, Papel ou Tesoura</h1>
+
+<script>
+
+const opcoes = ["pedra", "papel", "tesoura"];
+
+const entrada = prompt("Escolha: pedra, papel ou tesoura");
+
+if (!entrada) {
+  console.log("Jogo cancelado.");
+} else {
+
+  const usuario = entrada.toLowerCase();
+  const computador = opcoes[Math.floor(Math.random() * opcoes.length)];
+
+  console.log(`Você escolheu: ${usuario}`);
+  console.log(`Computador escolheu: ${computador}`);
+
+  if (!opcoes.includes(usuario)) {
+    console.log("Escolha inválida!");
+
+  } else if (usuario === computador) {
+    console.log("Empate!");
+
+  } else if (
+    (usuario === "pedra" && computador === "tesoura") ||
+    (usuario === "papel" && computador === "pedra") ||
+    (usuario === "tesoura" && computador === "papel")
+  ) {
+    console.log("Você venceu!");
+
+  } else {
+    console.log("Você perdeu!");
+  }
+
+}
+
+</script>
+
+</body>
+</html>

@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+<meta charset="UTF-8">
+<title>Jogo do Número Secreto</title>
+</head>
+
+<body>
+
+<h1>Adivinhe o número (1 a 20)</h1>
+
+<input id="palpite" type="number">
+<button onclick="verificar()">Tentar</button>
+
+<p id="mensagem"></p>
+
+<script>
+
+const numSecreto = Math.floor(Math.random() * 20) + 1;
+let tentativas = 0;
+
+function verificar() {
+
+  const palpite = parseInt(document.getElementById("palpite").value);
+  tentativas++;
+
+  if (palpite === numSecreto) {
+    document.getElementById("mensagem").textContent =
+      `Parabéns! Você acertou o número ${numSecreto} em ${tentativas} tentativa(s)!`;
+
+  } else if (palpite > numSecreto) {
+    document.getElementById("mensagem").textContent =
+      "O número secreto é menor";
+
+  } else {
+    document.getElementById("mensagem").textContent =
+      "O número secreto é maior";
+  }
+
+}
+
+</script>
+
+</body>
+</html>
