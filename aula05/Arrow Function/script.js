@@ -1,51 +1,46 @@
-// MESMO CÓDIGO, POREM ESSA ATIVIDADE PEDE ALGUMAS FUNÇÕES
+//Gasolina: R$  6,04
+// Etanol: R$ 5.24
+// Diesel: R$ 6.22
 
-//Gasolina: R$ 6,69
-//Etanol: R$ 5,80
-//Diesel: R$ 6,20
+const precos = {
+    gasolina:  6.04,
+    etanol: 5.24,
+    diesel: 6.22
+};
 
-// valores de cada combustível
-const preco = {
-    gasolina = 6.69,
-    etanol = 5.80,
-    diesel = 6.20
-}
+// 2. Arrow Function
+const calcularAbastecimento = (precoCombustivel, litros) => {
+    const valorTotal = precoCombustivel * litros;
+    // Formatação para Real Brasileiro (R$ 0,00)
+    return valorTotal.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' });
+};
 
-const atualizarValor = ("combustivel", litros) => litros = parseFloat (document.getElementById("litros").value)
+// 3. Arrow Function
+const atualizarValor = () => {
+    const tipo = document.getElementById("combustivel").value;
+    const inputLitros = document.getElementById("litros").value;
+    const litros = parseFloat(inputLitros);
+    const campoResultado = document.getElementById("resultado");
 
-function atualizarValor => {
-    let tipo = document.getElementById("combustivel").value
-    let litros = parseFloat(document.getElementById("litros").value)
-    let precoPorLitros
-}
-    switch (tipo) {
-        case "gasolina":
-            precoPorLitros = precoGasolina
-            break
-        case "etanol":
-            precoPorLitros = precoEtanol
-            break
-        case "diesel":
-            precoPorLitros = precoDiesel
-            break
-        default:
-            console.log("Escolha uma opção")
-            return
+    // Validação: Campos vazios
+    if (!tipo || inputLitros === "") {
+        campoResultado.textContent = "R$ 0,00";
+        return; 
     }
-    console.log(tipo)
-    console.log(precoPorLitros)
 
-    //chamar a função "CalcularAbastecimento"
-    CalcularAbastecimento(precoPorLitros, litros)
-}
+    // Validação: Números negativos
+    if (isNaN(litros) || litros <= 0) {
+        alert("Por favor, insira uma quantidade de litros válida e maior que zero.");
+        document.getElementById("litros").value = "";
+        campoResultado.textContent = "R$ 0,00";
+        return;
+    }
 
-let tipo = document.getElementById("combustivel")
-tipo.addEventListener("change", atualizarValor)
+    const precoPorLitro = precos[tipo];
 
-function CalcularAbastecimento(precoCombustivel, litros) {
-    let valorTotal = precoCombustivel * litros
-    document.getElementById("resultado").textContent = valorTotal
-}
+    // Atualiza a tela com o resultado formatado
+    campoResultado.textContent = calcularAbastecimento(precoPorLitro, litros);
+};
 
-let litros = document.getElementById("litros")
-litros.addEventListener("input", atualizarValor)
+document.getElementById("combustivel").addEventListener("change", atualizarValor);
+document.getElementById("litros").addEventListener("input", atualizarValor);
