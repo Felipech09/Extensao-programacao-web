@@ -3,16 +3,12 @@ const express = require("express");
 const app = express();
 const PORT = 3000;
 
-// Permite pegar dados do formulário
 app.use(express.urlencoded({ extended: true }));
 
-// Pasta pública
 app.use(express.static("public"));
 
-// Array dos feedbacks
 let feedbacks = [];
 
-// Enviar feedback
 app.post("/feedbacks/enviar", (req, res) => {
 
     const { nome, comentario } = req.body;
@@ -25,7 +21,6 @@ app.post("/feedbacks/enviar", (req, res) => {
     res.redirect("/feedbacks/lista");
 });
 
-// Listar feedbacks
 app.get("/feedbacks/lista", (req, res) => {
 
     let lista = "";
